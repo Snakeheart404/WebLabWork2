@@ -4,11 +4,13 @@
         "es2021": true
     },
     "extends": [
-        "google"
+        "google",
+        "plugin:sonarjs/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": 13
     },
+    "plugins": ["sonarjs"],
     "rules": {
     }
 }
