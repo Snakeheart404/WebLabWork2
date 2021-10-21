@@ -3,14 +3,11 @@
         "browser": true,
         "es2021": true
     },
-    "extends": [
-        "google",
-        "plugin:sonarjs/recommended"
-    ],
+    "extends": ["metarhia", "plugin:sonarjs/recommended"],
     "parserOptions": {
-        "ecmaVersion": 13
+        "ecmaVersion": 13,
+        "sourceType": "module"
     },
     "plugins": ["sonarjs"],
-    "rules": {
-    }
+    "rules": {}
 }
