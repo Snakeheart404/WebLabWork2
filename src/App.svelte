@@ -1,24 +1,67 @@
-<script>
-	export let name;
-</script>
-
 <main>
-	<h1>Hello {name}!</h1>
-	<p>blah blah Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<form><h1>Fill in the form:</h1>
+		<input type="text" name="name" placeholder="Name">
+		<input type="email" name="email" placeholder="Email">
+		<textarea name="text" placeholder="Enter your mesage..."></textarea>
+		<button>Send</button>
+	</form>
 </main>
 
 <style>
+    :root {
+        --custom-red: #CD5C5C;
+        --form-background: #F5F5F5;
+				--input-background: #FFFFFF;
+        --button-text: #FFFFFF;
+    }
+
+		form {
+        background-color: var(--form-background);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        width: 25%;
+        border-radius: 10px;
+        margin: auto auto auto auto;
+		}
+
+    form input {
+				width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: var(--input-background);
+    }
+
+		form button {
+        color: var(--button-text);
+				background-color: var(--custom-red);
+        border-radius: 10px;
+		}
+
+		form textarea {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: var(--input-background);
+				resize: none;
+		}
+
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+			text-align: center;
+			display: flex;
+      /*padding: 1em;
+			max-width: 240px;
+			margin-right: auto;
+			margin-left: auto;*/
 	}
 
-	h1 {
-		color: #ff3e00;
+	form h1 {
+		color: var(--custom-red);
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 2em;
 		font-weight: 100;
 	}
 
