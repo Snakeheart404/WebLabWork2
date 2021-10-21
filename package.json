@@ -6,12 +6,10 @@
         "build": "rollup -c",
         "dev": "rollup -c -w",
         "start": "sirv public --no-clear",
-        "jslint": "eslint \"**/*.js\" --ignore-path .gitignore",
-        "jslint:fix": "eslint --fix \"**/*.js\" --ignore-path .gitignore",
-        "format": "prettier --check . --ignore-path .gitignore",
-        "format:fix": "prettier --write . --ignore-path .gitignore",
-        "stylelint": "stylelint \"**/*.css\" --ignore-path .gitignore",
-        "stylelint:fix": "stylelint \"**/*.css\" --fix --ignore-path .gitignore"
+        "jslint": "eslint \"**/*.js\"",
+        "format": "prettier --write .",
+        "stylelint": "stylelint \"**/*.css\"",
+        "prepare": "husky install"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^17.0.0",
