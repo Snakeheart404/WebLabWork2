@@ -9,5 +9,7 @@
         "sourceType": "module"
     },
     "plugins": ["sonarjs"],
-    "rules": {}
+    "rules": {
+        "max-len": "off"
+    }
 }
