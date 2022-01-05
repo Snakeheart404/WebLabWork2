@@ -1,10 +1,10 @@
 {
   "functions": {
-    "runtime": "nodejs16",
+    "runtime": "nodejs14",
     "source": "functions"
   },
   "hosting": {
-    "public": "public",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
