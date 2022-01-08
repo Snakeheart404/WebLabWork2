@@ -1,16 +1,16 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": ["metarhia", "plugin:sonarjs/recommended"],
-    "parserOptions": {
-        "ecmaVersion": 13,
-        "sourceType": "module"
-    },
-    "plugins": ["sonarjs"],
-    "rules": {
-        "max-len": "off",
-        "indent": "off"
-    }
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": ["metarhia", "plugin:sonarjs/recommended"],
+	"parserOptions": {
+		"ecmaVersion": 13,
+		"sourceType": "module"
+	},
+	"plugins": ["sonarjs"],
+	"rules": {
+		"max-len": "off",
+		"indent": "off"
+	}
 }

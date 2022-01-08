@@ -1,69 +1,70 @@
 <main>
-	<form><h1>Fill in the form:</h1>
-		<input type="text" name="name" placeholder="Name">
-		<input type="email" name="email" placeholder="Email">
-		<textarea name="text" placeholder="Enter your mesage..."></textarea>
+	<form>
+		<h1>Fill in the form:</h1>
+		<input type="text" name="name" placeholder="Name" />
+		<input type="email" name="email" placeholder="Email" />
+		<textarea name="text" placeholder="Enter your mesage..." />
 		<button>Send</button>
 	</form>
 </main>
 
 <style>
-    :root {
-        --custom-red: #CD5C5C;
-        --form-background: #F5F5F5;
-        --input-background: #FFFFFF;
-        --button-text: #FFFFFF;
-    }
-    form {
-        background-color: var(--form-background);
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 50%;
-        width: 25%;
-        border-radius: 10px;
-        margin: 10px auto auto auto;
-    }
-    form input {
-        width: 100%;
-        border: none;
-        border-radius: 10px;
-        background: var(--input-background);
-				margin: 5px;
-    }
-    form button {
-        color: var(--button-text);
-        background-color: var(--custom-red);
-        border-radius: 10px;
-        margin: 5px;
-    }
-    form textarea {
-        width: 100%;
-        border: none;
-        border-radius: 10px;
-        background: var(--input-background);
-        resize: none;
-        margin: 5px;
-    }
-    main {
-        text-align: center;
-        display: flex;
-        /*padding: 1em;
+	:root {
+		--custom-red: #cd5c5c;
+		--form-background: #f5f5f5;
+		--input-background: #ffffff;
+		--button-text: #ffffff;
+	}
+	form {
+		background-color: var(--form-background);
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 50%;
+		width: 25%;
+		border-radius: 10px;
+		margin: 10px auto auto auto;
+	}
+	form input {
+		width: 100%;
+		border: none;
+		border-radius: 10px;
+		background: var(--input-background);
+		margin: 5px;
+	}
+	form button {
+		color: var(--button-text);
+		background-color: var(--custom-red);
+		border-radius: 10px;
+		margin: 5px;
+	}
+	form textarea {
+		width: 100%;
+		border: none;
+		border-radius: 10px;
+		background: var(--input-background);
+		resize: none;
+		margin: 5px;
+	}
+	main {
+		text-align: center;
+		display: flex;
+		/*padding: 1em;
 				max-width: 240px;
 				margin-right: auto;
 				margin-left: auto;*/
-    }
-    form h1 {
-        color: var(--custom-red);
-        text-transform: uppercase;
-        font-size: 2em;
-        font-weight: 100;
-    }
-    @media (min-width: 640px) {
-        main {
-            max-width: none;
-        }
-    }
+	}
+	form h1 {
+		color: var(--custom-red);
+		text-transform: uppercase;
+		font-size: 2em;
+		font-weight: 100;
+	}
+	@media (min-width: 640px) {
+		main {
+			max-width: none;
+		}
+	}
 </style>
