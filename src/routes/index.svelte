@@ -1,59 +1,69 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
-<script>
-	import Counter from '$lib/Counter.svelte';
-</script>
-
-<svelte:head>
-	<title>Home</title>
-</svelte:head>
-
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+<main>
+	<form><h1>Fill in the form:</h1>
+		<input type="text" name="name" placeholder="Name">
+		<input type="email" name="email" placeholder="Email">
+		<textarea name="text" placeholder="Enter your mesage..."></textarea>
+		<button>Send</button>
+	</form>
+</main>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+    :root {
+        --custom-red: #CD5C5C;
+        --form-background: #F5F5F5;
+        --input-background: #FFFFFF;
+        --button-text: #FFFFFF;
+    }
+    form {
+        background-color: var(--form-background);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        width: 25%;
+        border-radius: 10px;
+        margin: 10px auto auto auto;
+    }
+    form input {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: var(--input-background);
+				margin: 5px;
+    }
+    form button {
+        color: var(--button-text);
+        background-color: var(--custom-red);
+        border-radius: 10px;
+        margin: 5px;
+    }
+    form textarea {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: var(--input-background);
+        resize: none;
+        margin: 5px;
+    }
+    main {
+        text-align: center;
+        display: flex;
+        /*padding: 1em;
+				max-width: 240px;
+				margin-right: auto;
+				margin-left: auto;*/
+    }
+    form h1 {
+        color: var(--custom-red);
+        text-transform: uppercase;
+        font-size: 2em;
+        font-weight: 100;
+    }
+    @media (min-width: 640px) {
+        main {
+            max-width: none;
+        }
+    }
 </style>
