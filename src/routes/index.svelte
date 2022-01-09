@@ -1,5 +1,5 @@
 <script>
-	import loader from '$lib/loader.gif';
+	import formSpinner from '$lib/loader.gif';
 	let form = {
 		reset: () => {}
 	};
@@ -54,88 +54,71 @@
 	};
 </script>
 
-<main>
-	<form bind:this={form} on:submit|preventDefault={contactFormHandler}>
-		<h1>Fill in the form:</h1>
-		<input type="text" name="name" placeholder="Name" required />
-		<input type="email" name="email" placeholder="Email" required />
-		<textarea name="text" placeholder="Enter your mesage..." required />
-		<button type="submit" disabled={formBtnDisable}>{#if showSpinner}
-			<img src={loader} alt="loader" />
+<form class="contact-form" bind:this={form} on:submit|preventDefault={contactFormHandler}>
+	<input class="contact-form-input" type="text" name="userName" placeholder="Name" required />
+	<input class="contact-form-input" type="email" name="userEmail" placeholder="Email" required />
+	<textarea
+		class="contact-form-message"
+		name="userMessage"
+		cols="30"
+		rows="10"
+		placeholder="Message text"
+		required
+	/>
+
+	<button class="button contact-form-button" type="submit" disabled={formBtnDisable}>
+		{#if showSpinner}
+			<img src={formSpinner} alt="spinner" />
 		{:else if true}
 			Send
-		{/if}</button>
-		{#if statusMessage}
-			<p class="status-text success">
-				Message sent!
-				<button on:click={resetFormStatus}> &times; </button>
-			</p>
-		{:else if textError != ""}
-			<p class="status-text error">
-				{textError}
-				<button on:click={resetFormStatus}> &times; </button>
-			</p>
 		{/if}
-	</form>
-</main>
+	</button>
+
+	{#if statusMessage}
+		<p class="status-text success">
+			Message sent!
+			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>
+		</p>
+	{:else if textError != ""}
+		<p class="status-text error">
+			{textError}
+			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>
+		</p>
+	{/if}
+</form>
 
 <style>
-	:root {
-		--custom-red: #cd5c5c;
-		--form-background: #f5f5f5;
-		--input-background: #ffffff;
-		--button-text: #ffffff;
-	}
-	form {
-		background-color: var(--form-background);
-		padding: 10px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 50%;
-		width: 25%;
-		border-radius: 10px;
-		margin: 10px auto auto auto;
-	}
-	form input {
-		width: 100%;
-		border: none;
-		border-radius: 10px;
-		background: var(--input-background);
-		margin: 5px;
-	}
-	form button {
-		color: var(--button-text);
-		background-color: var(--custom-red);
-		border-radius: 10px;
-		margin: 5px;
-	}
-	form textarea {
-		width: 100%;
-		border: none;
-		border-radius: 10px;
-		background: var(--input-background);
-		resize: none;
-		margin: 5px;
-	}
-	main {
-		text-align: center;
-		display: flex;
-		/*padding: 1em;
-				max-width: 240px;
-				margin-right: auto;
-				margin-left: auto;*/
-	}
-	form h1 {
-		color: var(--custom-red);
-		text-transform: uppercase;
-		font-size: 2em;
-		font-weight: 100;
-	}
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+    * {
+        margin: 0;
+        --bg-color: white;
+        --border-color: black;
+    }
+    form {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+    .contact-form-input {
+        height: 5%;
+        width: 25%;
+    }
+    button {
+        padding: 0;
+    }
+    textarea {
+        width: 25%;
+        height: 40%;
+    }
+    p {
+        background: var(--bg-color);
+        border: 1px solid;
+        border-color: var(--border-color);
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
 </style>
