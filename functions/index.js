@@ -65,7 +65,7 @@ exports.sendmail = functions.https.onRequest((req, res) => {
 
 	const mailOptions = {
 		from: `Contact form <${secretMailData.mail}>`,
-		to: secretMailData.to,
+		to: secretMailData.mail,
 		subject: 'Mail from form',
 		html: html
 	};

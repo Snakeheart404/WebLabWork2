@@ -55,14 +55,14 @@
 </script>
 
 <form class="contact-form" bind:this={form} on:submit|preventDefault={contactFormHandler}>
+	<h1>Fill in the form:</h1>
 	<input class="contact-form-input" type="text" name="userName" placeholder="Name" required />
 	<input class="contact-form-input" type="email" name="userEmail" placeholder="Email" required />
 	<textarea
 		class="contact-form-message"
 		name="userMessage"
-		cols="30"
-		rows="10"
-		placeholder="Message text"
+		rows="5"
+		placeholder="Your message goes here..."
 		required
 	/>
 
@@ -79,7 +79,7 @@
 			Message sent!
 			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>
 		</p>
-	{:else if textError != ""}
+	{:else if textError != ''}
 		<p class="status-text error">
 			{textError}
 			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>
@@ -88,37 +88,57 @@
 </form>
 
 <style>
-    * {
-        margin: 0;
-        --bg-color: white;
-        --border-color: black;
+    :root {
+        --custom-red: #cd5c5c;
+        --form-background: #f5f5f5;
+        --input-background: #ffffff;
+        --button-text: #ffffff;
     }
     form {
-        height: 50%;
+        background-color: var(--form-background);
+        padding: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex: 1;
-    }
-    .contact-form-input {
-        height: 5%;
+        height: 50%;
         width: 25%;
+        border-radius: 10px;
+        margin: 10px auto auto auto;
     }
-    button {
-        padding: 0;
+    form input {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: var(--input-background);
+        margin: 5px;
     }
-    textarea {
-        width: 25%;
-        height: 40%;
+    form button {
+        color: var(--button-text);
+        background-color: var(--custom-red);
+        border-radius: 10px;
+        margin: 5px;
     }
-    p {
-        background: var(--bg-color);
-        border: 1px solid;
-        border-color: var(--border-color);
+    form textarea {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background: var(--input-background);
+        resize: none;
+        margin: 5px;
+    }
+    main {
+        text-align: center;
+        display: flex;
+    }
+    form h1 {
+        color: var(--custom-red);
+        text-transform: uppercase;
+        font-size: 2em;
+        font-weight: 100;
     }
     img {
-        width: 100%;
-        height: 100%;
+        width: 30%;
+        height: 30%;
     }
 </style>
