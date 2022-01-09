@@ -88,57 +88,57 @@
 </form>
 
 <style>
-    :root {
-        --custom-red: #cd5c5c;
-        --form-background: #f5f5f5;
-        --input-background: #ffffff;
-        --button-text: #ffffff;
-    }
-    form {
-        background-color: var(--form-background);
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 50%;
-        width: 25%;
-        border-radius: 10px;
-        margin: 10px auto auto auto;
-    }
-    form input {
-        width: 100%;
-        border: none;
-        border-radius: 10px;
-        background: var(--input-background);
-        margin: 5px;
-    }
-    form button {
-        color: var(--button-text);
-        background-color: var(--custom-red);
-        border-radius: 10px;
-        margin: 5px;
-    }
-    form textarea {
-        width: 100%;
-        border: none;
-        border-radius: 10px;
-        background: var(--input-background);
-        resize: none;
-        margin: 5px;
-    }
-    main {
-        text-align: center;
-        display: flex;
-    }
-    form h1 {
-        color: var(--custom-red);
-        text-transform: uppercase;
-        font-size: 2em;
-        font-weight: 100;
-    }
-    img {
-        width: 30%;
-        height: 30%;
-    }
+	:root {
+		--custom-red: #cd5c5c;
+		--form-background: #f5f5f5;
+		--input-background: #ffffff;
+		--button-text: #ffffff;
+	}
+	form {
+		background-color: var(--form-background);
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 50%;
+		width: 25%;
+		border-radius: 10px;
+		margin: 10px auto auto auto;
+	}
+	form input {
+		width: 100%;
+		border: none;
+		border-radius: 10px;
+		background: var(--input-background);
+		margin: 5px;
+	}
+	form button {
+		color: var(--button-text);
+		background-color: var(--custom-red);
+		border-radius: 10px;
+		margin: 5px;
+	}
+	form textarea {
+		width: 100%;
+		border: none;
+		border-radius: 10px;
+		background: var(--input-background);
+		resize: none;
+		margin: 5px;
+	}
+	main {
+		text-align: center;
+		display: flex;
+	}
+	form h1 {
+		color: var(--custom-red);
+		text-transform: uppercase;
+		font-size: 2em;
+		font-weight: 100;
+	}
+	img {
+		width: 30%;
+		height: 30%;
+	}
 </style>

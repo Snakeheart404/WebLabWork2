@@ -64,7 +64,7 @@ exports.sendmail = functions.https.onRequest((req, res) => {
 	const html = sanitizeHtml(`<h2> Message from  form: </h2>${lines}`);
 
 	const mailOptions = {
-		from: `Contact form <${secretMailData.mail}>`,
+		from: secretMailData.mail,
 		to: secretMailData.mail,
 		subject: 'Mail from form',
 		html: html
