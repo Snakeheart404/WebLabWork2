@@ -10,6 +10,7 @@
 	function resetFormStatus() {
 		statusMessage = false;
 		formBtnDisable = false;
+		statusMessage = false;
 	}
 	let contactFormHandler = async (e) => {
 		formBtnDisable = true;
@@ -137,6 +138,11 @@
 		font-size: 2em;
 		font-weight: 100;
 	}
+  p {
+      background: var(--form-background);
+      border: 1px solid;
+      border-color: var(--custom-red);
+  }
 	img {
 		width: 30%;
 		height: 30%;

@@ -18,8 +18,8 @@ jobs:
       - name: Installing dependencies
         run: npm ci
       - name: Running Eslint
-        run: npm run jslint
-      - name: Running CSS lint
-        run: npm run stylelint
+        run: npm run jslint:fix
+      - name: Running Stylelint
+        run: npm run stylelint:fix
       - name: Running Prettier
-        run: npm run format
+        run: npm run format:fix
