@@ -1,5 +1,5 @@
 <script>
-	import formSpinner from '$lib/loader.gif';
+	import Loader from "../lib/Loader.svelte";
 	let form = {
 		reset: () => {}
 	};
@@ -69,7 +69,7 @@
 
 	<button class="button contact-form-button" type="submit" disabled={formBtnDisable}>
 		{#if showSpinner}
-			<img src={formSpinner} alt="spinner" />
+			<Loader />
 		{:else if true}
 			Send
 		{/if}

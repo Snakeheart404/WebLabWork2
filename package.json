@@ -28,7 +28,8 @@
 		"stylelint": "^14.2.0",
 		"stylelint-config-standard": "^24.0.0",
 		"svelte": "^3.44.0",
-		"svelte-adapter-firebase": "^0.13.1"
+		"svelte-adapter-firebase": "^0.13.1",
+		"svelte-loading-spinners": "^0.1.7"
 	},
 	"type": "module",
 	"dependencies": {
