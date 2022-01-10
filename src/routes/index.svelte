@@ -1,150 +1,116 @@
 <script>
-	import Loader from "../lib/Loader.svelte";
+	import Loader from '../lib/Loader.svelte';
 	let form = {
-		reset: () => {}
+		reset: () => {},
 	};
-	let textError = '';
+	let errorText = '';
 	let showSpinner = false;
 	let statusMessage = false;
+	let errorMessage = false;
 	let formBtnDisable = false;
 	function resetFormStatus() {
 		statusMessage = false;
+		errorMessage = false;
 		formBtnDisable = false;
-		statusMessage = false;
 	}
-	let contactFormHandler = async (e) => {
+	let contactFormHandler = async e => {
+		statusMessage = false;
+		errorMessage = false;
 		formBtnDisable = true;
 		showSpinner = true;
-		statusMessage = false;
-		const referrerVal = document.referrer;
-		let formData = { referrer: referrerVal };
+		let formData = {};
 		Array.from(form.elements)
-			.filter((e) => e.tagName !== 'BUTTON')
-			.forEach((e) => {
-				formData[e.name] = e.value;
-			});
+			.filter(el => el.tagName !== 'BUTTON')
+			.forEach(element => (formData[element.name] = element.value));
+		formData['referrer'] = document.referrer;
 		try {
-			await fetch('/api/sendmail', {
+			let response = await fetch('/api/sendMail', {
+				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(formData),
-				method: 'POST'
-			}).then((res) => {
-				if (res.ok) {
-					return res;
-				}
-				throw res;
 			});
+			if (!response.ok) {
+				throw response;
+			}
+			form.reset();
 			statusMessage = true;
-			e.target.reset();
+			return response;
 		} catch (e) {
 			if (e.status >= 500) {
-				textError = 'Error Server';
+				errorText = 'Server error';
 			} else if (e.status === 400) {
-				textError = 'Empty email message!';
+				errorText = 'Empty email message!';
 			} else if (e.status === 429) {
-				textError = 'Send too many mail';
+				errorText = 'You sent mail too many times';
 			}
-			statusMessage = false;
+			errorMessage = true;
 			console.log(e);
 		} finally {
 			showSpinner = false;
-			formBtnDisable = false;
 		}
 	};
 </script>
 
-<form class="contact-form" bind:this={form} on:submit|preventDefault={contactFormHandler}>
-	<h1>Fill in the form:</h1>
-	<input class="contact-form-input" type="text" name="userName" placeholder="Name" required />
-	<input class="contact-form-input" type="email" name="userEmail" placeholder="Email" required />
-	<textarea
-		class="contact-form-message"
-		name="userMessage"
-		rows="5"
-		placeholder="Your message goes here..."
-		required
-	/>
+<svelte:head>
+	<title>Home</title>
+</svelte:head>
 
-	<button class="button contact-form-button" type="submit" disabled={formBtnDisable}>
-		{#if showSpinner}
-			<Loader />
-		{:else if true}
-			Send
+<section>
+	<h1>Please, fill form</h1>
+	<form
+		class="contact-form"
+		bind:this={form}
+		on:submit|preventDefault={contactFormHandler}
+	>
+		<input
+			class="contact-form-input"
+			type="text"
+			name="userName"
+			placeholder="Name"
+			required
+		/>
+		<input
+			class="contact-form-input"
+			type="email"
+			name="userEmail"
+			placeholder="Email"
+			required
+		/>
+		<textarea
+			class="contact-form-message"
+			name="userMessage"
+			cols="30"
+			rows="10"
+			placeholder="Message text"
+			required
+		/>
+		{#if statusMessage}
+			<p class="status-text success">
+				Message sent!
+				<button class="button class-btn" on:click={resetFormStatus}>
+					&times;
+				</button>
+			</p>
+		{:else if errorMessage}
+			<p class="status-text error">
+				{errorText}
+				<button class="button class-btn" on:click={resetFormStatus}>
+					&times;
+				</button>
+			</p>
 		{/if}
-	</button>
 
-	{#if statusMessage}
-		<p class="status-text success">
-			Message sent!
-			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>
-		</p>
-	{:else if textError != ''}
-		<p class="status-text error">
-			{textError}
-			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>
-		</p>
-	{/if}
-</form>
-
-<style>
-	:root {
-		--custom-red: #cd5c5c;
-		--form-background: #f5f5f5;
-		--input-background: #ffffff;
-		--button-text: #ffffff;
-	}
-	form {
-		background-color: var(--form-background);
-		padding: 10px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 50%;
-		width: 25%;
-		border-radius: 10px;
-		margin: 10px auto auto auto;
-	}
-	form input {
-		width: 100%;
-		border: none;
-		border-radius: 10px;
-		background: var(--input-background);
-		margin: 5px;
-	}
-	form button {
-		color: var(--button-text);
-		background-color: var(--custom-red);
-		border-radius: 10px;
-		margin: 5px;
-	}
-	form textarea {
-		width: 100%;
-		border: none;
-		border-radius: 10px;
-		background: var(--input-background);
-		resize: none;
-		margin: 5px;
-	}
-	main {
-		text-align: center;
-		display: flex;
-	}
-	form h1 {
-		color: var(--custom-red);
-		text-transform: uppercase;
-		font-size: 2em;
-		font-weight: 100;
-	}
-	p {
-		background: var(--form-background);
-		border: 1px solid;
-		border-color: var(--custom-red);
-	}
-	img {
-		width: 30%;
-		height: 30%;
-	}
-</style>
+		<button
+			class="button contact-form-button"
+			type="submit"
+			disabled={formBtnDisable}
+		>
+			{#if showSpinner}
+				<Loader />
+			{/if}
+			Submit
+		</button>
+	</form>
+</section>
