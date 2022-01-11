@@ -1,3 +1,3 @@
 <header>
-	<title>Contact us!</title>
+  <title>Contact us!</title>
 </header>
