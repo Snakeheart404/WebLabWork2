@@ -56,6 +56,7 @@
 </script>
 
 <form class="contact-form" bind:this={form} on:submit|preventDefault={contactFormHandler}>
+	<h1>Fill in the form:</h1>
 	<input class="contact-form-input" type="text" name="userName" placeholder="Name" required />
 	<input class="contact-form-input" type="email" name="userEmail" placeholder="Email" required />
 	<textarea
@@ -80,7 +81,7 @@
 			Message sent!
 			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>
 		</p>
-	{:else if textError != ""}
+	{:else if textError != ''}
 		<p class="status-text error">
 			{textError}
 			<button class="button class-btn" on:click={resetFormStatus}> &times; </button>

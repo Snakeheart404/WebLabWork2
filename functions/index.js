@@ -20,19 +20,19 @@ if (secretMailData) {
 	});
 }
 
-/*const rateLimit = {
+const rateLimit = {
 	ipNumberCalls: 3,
 	timeSeconds: 30,
 	ipData: new Map()
 };
-*/
+
 exports.sendmail = functions.https.onRequest((req, res) => {
 	if (!transporter) {
 		functions.logger.log('Mail is undefined');
 		return res.status(500).json({ code: '500', error: 'Mail name and pass are undefined' });
 	}
 
-	/*const currentTime = new Date();
+	const currentTime = new Date();
 
 	const currentIp = req.headers['fastly-client-ip'];
 	const currentIpUser = rateLimit.ipData.get(currentIp) ?? {
@@ -52,7 +52,7 @@ exports.sendmail = functions.https.onRequest((req, res) => {
 	currentIpUser.count++;
 	currentIpUser.time = new Date();
 	rateLimit.ipData.set(currentIp, currentIpUser);
-*/
+
 	functions.logger.log(secretMailData.to);
 
 	if (!Object.keys(req.body ?? {}).length) {
