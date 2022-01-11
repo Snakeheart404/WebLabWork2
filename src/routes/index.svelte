@@ -40,11 +40,11 @@
       e.target.reset();
     } catch (e) {
       if (e.status >= 500) {
-        textError = 'Error Server';
+        textError = 'Error server';
       } else if (e.status === 400) {
         textError = 'Empty email message!';
       } else if (e.status === 429) {
-        textError = 'Send too many mail';
+        textError = 'Too many messages!';
       }
       statusMessage = false;
       console.log(e);
@@ -80,7 +80,7 @@
     name="userMessage"
     cols="30"
     rows="10"
-    placeholder="Message text"
+    placeholder="Your message goes here..."
     required
   />
 

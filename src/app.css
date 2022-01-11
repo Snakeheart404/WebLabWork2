@@ -13,8 +13,10 @@
   --heading-color: rgb(0 0 0 / 70%);
   --text-color: #444;
   --background-without-opacity: rgb(255 255 255 / 70%);
+  --box-shadow: rgb(255 255 255 / 70%);
   --column-width: 42rem;
   --column-margin-top: 4rem;
+  --white-color: rgb(255 255 255 / 0%);
 }
 
 body {
@@ -83,9 +85,9 @@ h2 {
 pre {
   font-size: 16px;
   font-family: var(--font-mono);
-  background-color: rgb(255 255 255 / 45%);
+  background-color: var(--background-without-opacity);
   border-radius: 3px;
-  box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
+  box-shadow: 2px 2px 6px var(--box-shadow);
   padding: 0.5em;
   overflow-x: auto;
   color: var(--text-color);
