@@ -27,12 +27,12 @@
     "prettier-plugin-svelte": "^2.4.0",
     "stylelint": "^14.2.0",
     "stylelint-config-standard": "^24.0.0",
-    "svelte": "^3.44.0",
     "svelte-adapter-firebase": "^0.13.1",
     "svelte-loading-spinners": "^0.1.7"
   },
   "type": "module",
   "dependencies": {
+    "svelte": "^3.44.0",
     "@fontsource/fira-mono": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
     "cookie": "^0.4.1",
