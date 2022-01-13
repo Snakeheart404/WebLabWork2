@@ -1,21 +1,16 @@
 <script>
     import Loader from '../lib/Loader.svelte';
 
-    let form = {
-        reset: () => {}
-    };
+    let form;
     let textError = '';
     let showSpinner = false;
-    let statusMessage = false;
     let formBtnDisable = false;
     function resetFormStatus() {
-        statusMessage = false;
         formBtnDisable = false;
     }
     let contactFormHandler = async (e) => {
         formBtnDisable = true;
         showSpinner = true;
-        statusMessage = false;
         const referrerVal = document.referrer;
         let formData = { referrer: referrerVal };
         Array.from(form.elements)
@@ -36,7 +31,6 @@
                 }
                 throw res;
             });
-            statusMessage = true;
             e.target.reset();
         } catch (e) {
             if (e.status >= 500) {
@@ -46,7 +40,6 @@
             } else if (e.status === 429) {
                 textError = 'Too many messages!';
             }
-            statusMessage = false;
             console.log(e);
         } finally {
             showSpinner = false;
@@ -96,14 +89,14 @@
         {/if}
     </button>
 
-    {#if statusMessage}
+    {#if textError}
         <p class="status-text success">
             Message sent!
             <button class="button class-btn" on:click={resetFormStatus}>
                 &times;
             </button>
         </p>
-    {:else if textError != ''}
+    {:else if !textError}
         <p class="status-text error">
             {textError}
             <button class="button class-btn" on:click={resetFormStatus}>
@@ -129,6 +122,7 @@
         align-items: center;
         height: 50%;
         width: 25%;
+        min-width: min-content;
         border-radius: 10px;
         margin: 10px auto auto auto;
     }
