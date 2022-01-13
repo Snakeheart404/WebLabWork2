@@ -1,7 +1,9 @@
 <script>
     import Loader from '../lib/Loader.svelte';
 
-    let form;
+    let form = {
+        reset: () => {}
+    };
     let textError = '';
     let showSpinner = false;
     let formBtnDisable = false;
@@ -89,7 +91,7 @@
         {/if}
     </button>
 
-    {#if textError}
+    {#if textError == ''}
         <p class="status-text success">
             Message sent!
             <button class="button class-btn" on:click={resetFormStatus}>
