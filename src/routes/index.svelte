@@ -1,16 +1,16 @@
 <script>
     import Loader from '../lib/Loader.svelte';
 
-    let form = {
-        reset: () => {}
-    };
-    let textError = '';
+    let form;
+    let notificationText;
     let showSpinner = false;
     let formBtnDisable = false;
     function resetFormStatus() {
         formBtnDisable = false;
+        notificationText = '';
     }
     let contactFormHandler = async (e) => {
+        notificationText = '';
         formBtnDisable = true;
         showSpinner = true;
         const referrerVal = document.referrer;
@@ -33,14 +33,15 @@
                 }
                 throw res;
             });
+            notificationText = 'Message sent!';
             e.target.reset();
         } catch (e) {
             if (e.status >= 500) {
-                textError = 'Error server';
+                notificationText = 'Error server';
             } else if (e.status === 400) {
-                textError = 'Empty email message!';
+                notificationText = 'Empty email message!';
             } else if (e.status === 429) {
-                textError = 'Too many messages!';
+                notificationText = 'Too many messages!';
             }
             console.log(e);
         } finally {
@@ -91,16 +92,9 @@
         {/if}
     </button>
 
-    {#if textError == ''}
+    {#if notificationText}
         <p class="status-text success">
-            Message sent!
-            <button class="button class-btn" on:click={resetFormStatus}>
-                &times;
-            </button>
-        </p>
-    {:else if !textError}
-        <p class="status-text error">
-            {textError}
+            {notificationText}
             <button class="button class-btn" on:click={resetFormStatus}>
                 &times;
             </button>
@@ -123,8 +117,8 @@
         justify-content: center;
         align-items: center;
         height: 50%;
-        width: 25%;
-        min-width: min-content;
+        width: 20%;
+        min-width: 300px;
         border-radius: 10px;
         margin: 10px auto auto auto;
     }
@@ -149,10 +143,7 @@
         resize: none;
         margin: 5px;
     }
-    main {
-        text-align: center;
-        display: flex;
-    }
+
     form h1 {
         color: var(--custom-red);
         text-transform: uppercase;
@@ -163,9 +154,5 @@
         background: var(--form-background);
         border: 1px solid;
         border-color: var(--custom-red);
-    }
-    img {
-        width: 30%;
-        height: 30%;
     }
 </style>
